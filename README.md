@@ -5,7 +5,7 @@ Action to run a command on a remote server via ssh
 ## Usage
 
 ```yaml
-uses: actions/g-ssh-actions
+uses: actions/g-ssh-actions@v1
 with:
   host: ${{secrets.HOST}} # Remote server address / ip - required
   port: ${{secrets.PORT}} # Remote server port -  Default: 22 - optional
