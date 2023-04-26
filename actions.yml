@@ -1,0 +1,39 @@
+# action.yml
+name: 'SSH Actions'
+description: 'Action to do commands with ssh'
+inputs:
+  host:
+    description: "hostname / IP of the server"
+    required: true
+  port:
+    description: "ssh port of the server"
+    required: false
+    default: "22"
+  user:
+    description: "user of the server"
+    required: true
+  private_key:
+    description: "private ssh key registered on the server"
+    required: true
+  host_fingerprint:
+    description: "Fingerprint of the server, preventing man-in-the-middle attacks"
+    required: false
+  command:
+    description: "command to be executed"
+    required: false
+    default: "echo 'Hello world'"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    HOST: ${{ inputs.host }}
+    PORT: ${{ inputs.port }}
+    USER: ${{ inputs.user }}
+    PRIVATE_KEY: ${{ inputs.private_key }}
+    HOST_FINGERPRINT: ${{ inputs.host_fingerprint }}
+    COMMAND: ${{ inputs.command }}
+
+branding:
+  icon: "terminal"
+  color: "yellow"
